@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio – [Il tuo nome]</title>
+<meta name="description" content="Portfolio di cortometraggi, video immersivi, installazioni interattive e progetti 3D.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F0F1; --ink:#2B0E15; --muted:#6A5258; --line:#DCC9CD;
+  --bord:#6D1226; --deep:#3F0B18; --rose:#E3B7BF;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Instrument Sans",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+h1,h2,h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;margin:0;line-height:1}
+.wrap{max-width:70rem;margin:0 auto;padding:0 1.5rem}
+
+/* Barra in alto */
+.bar{position:sticky;top:0;z-index:10;background:var(--deep);color:#F6E9EB}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:.9rem;padding-bottom:.9rem}
+.bar .nome{font-family:"Instrument Serif",serif;font-size:1.4rem}
+.bar nav{display:flex;gap:1.5rem}
+.bar nav a{text-decoration:none;color:var(--rose)}
+.bar nav a:hover{color:#fff}
+
+/* Apertura */
+.hero{background:var(--deep);color:#F6E9EB;padding:6rem 0 7rem}
+.hero h1{font-size:clamp(3rem,10vw,8rem);letter-spacing:-.02em;max-width:13ch}
+.hero h1 em{color:var(--rose)}
+.hero p{max-width:34rem;margin:2rem 0 0;font-size:1.2rem;color:#D9BCC2}
+.hero a.vai{display:inline-block;margin-top:2.5rem;padding:.85rem 1.6rem;background:var(--rose);color:var(--deep);text-decoration:none;font-weight:600;border-radius:999px}
+.hero a.vai:hover{background:#fff}
+
+/* Progetti: fasce che scorrono una dopo l'altra */
+.fascia{padding:6rem 0;--fg:var(--ink);--fg2:var(--muted);--ombra:var(--rose)}
+.fascia.scura{background:var(--bord);color:#F6E9EB;--fg:#F6E9EB;--fg2:#D9BCC2;--ombra:var(--deep)}
+.progetto{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:3rem 4.5rem;align-items:center}
+.progetto.inverso .testo{order:2}
+.formato{display:inline-block;padding:.2rem .8rem;border:1px solid currentColor;border-radius:999px;font-size:.9rem;margin-bottom:1.25rem;color:var(--fg2)}
+.progetto h2{font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:-.01em}
+.progetto p{color:var(--fg);margin:1.25rem 0 0;max-width:30rem}
+.progetto .ruolo{color:var(--fg2);margin-top:1.5rem}
+.progetto .ruolo strong{color:var(--fg);font-weight:600}
+.premio{margin-top:1.5rem;padding:.9rem 1.1rem;border-left:4px solid var(--rose);background:rgba(255,255,255,.12);max-width:30rem}
+.fascia:not(.scura) .premio{background:#fff;border-left-color:var(--bord)}
+
+.media{aspect-ratio:16/9;background:#fff;color:var(--muted);border:1px dashed var(--line);box-shadow:16px 16px 0 var(--ombra);display:grid;place-items:center;text-align:center;padding:1rem;font-size:.95rem}
+.fascia.scura .media{background:var(--deep);color:#D9BCC2;border-color:#8C3347}
+.media.largo{aspect-ratio:2/1}
+.media img,.media video,.media iframe{display:block;width:100%;height:100%;border:0;object-fit:cover}
+
+/* Chi sono e contatti */
+.chi{padding:6rem 0}
+.chi .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:2rem 4.5rem}
+.chi h2{font-size:clamp(2.2rem,5vw,3.8rem);color:var(--bord)}
+.chi p{margin:0 0 1rem;max-width:34rem}
+footer{background:var(--deep);color:#F6E9EB;padding:4rem 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:2rem 5rem;justify-content:space-between}
+footer h2{font-size:2.4rem;margin-bottom:1rem}
+footer a{color:var(--rose)}
+footer a:hover{color:#fff}
+
+@media (max-width:52rem){
+  .progetto,.chi .wrap{grid-template-columns:1fr}
+  .progetto.inverso .testo{order:0}
+  .fascia,.chi{padding:4rem 0}
+  .hero{padding:4rem 0 5rem}
+  .media{box-shadow:10px 10px 0 var(--ombra)}
+  .bar nav{gap:1rem}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="nome">[Martina Maselli]</span>
+    <nav>
+      <a href="#progetti">Progetti</a>
+      <a href="#chi-sono">Chi sono</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Racconto storie con <em>immagini in movimento.</em></h1>
+    <a class="vai" href="#progetti">Guarda i progetti</a>
+  </div>
+</section>
+
+<main id="progetti">
+
+  <!-- Per ogni media: sostituisci il testo dentro .media con
+       <iframe src="LINK_EMBED_VIDEO" allowfullscreen title="Titolo del progetto"></iframe>
+       oppure <img src="images/nome-file.jpg" alt="Descrizione dell'immagine"> -->
+
+  <section class="fascia">
+    <div class="wrap progetto">
+      <div class="testo">
+        <span class="formato">Cortometraggio</span>
+        <h2>La dea bendata</h2>
+        <p>Cortometraggio realizzato come progetto universitario. Sul set ho curato la continuità e compilato i bollettini di edizione, affiancando il reparto regia; in seguito ho seguito l'intera post-produzione fino al montaggio finale.</p>
+        <p class="ruolo"><strong>Ruolo</strong> Segretaria di edizione e video editor</p>
+        <p class="premio">Selezionato per la rassegna “Unito vs Polito” al Sottodiciotto Filmfestival (2ª edizione).</p>
+      </div>
+      <div class="media">Qui va il video o un'immagine del progetto</div>
+    </div>
+  </section>
+
+  <section class="fascia scura">
+    <div class="wrap progetto inverso">
+      <div class="testo">
+        <span class="formato">Cortometraggio VR 180°</span>
+        <h2>Il mestiere di vivere</h2>
+        <p>Un cortometraggio in realtà virtuale a 180°. Ho gestito il workflow tecnico e organizzativo, la continuità sul set e la conservazione in sicurezza del girato ad alta risoluzione, fino al montaggio immersivo pensato per la visione in VR.</p>
+        <p class="ruolo"><strong>Ruolo</strong> Segretaria di edizione, data manager e video editor</p>
+      </div>
+      <div class="media largo">Qui va il video o un'immagine del progetto</div>
+    </div>
+  </section>
+
+  <section class="fascia">
+    <div class="wrap progetto">
+      <div class="testo">
+        <span class="formato">Cortometraggio</span>
+        <h2>Flight</h2>
+        <p>Progetto universitario in cui mi sono occupata del comparto macchina: setup tecnico e realizzazione delle inquadrature sul set, in collaborazione diretta con la regia e la direzione della fotografia.</p>
+        <p class="ruolo"><strong>Ruolo</strong> Camera operator</p>
+      </div>
+      <div class="media">Qui va il video o un'immagine del progetto</div>
+    </div>
+  </section>
+
+  <section class="fascia scura">
+    <div class="wrap progetto inverso">
+      <div class="testo">
+        <span class="formato">Video 360°</span>
+        <h2>Video immersivo a 360°</h2>
+        <p>Ho ideato il concept visivo e girato in totale autonomia con la videocamera sferica Insta360. Ho montato e rifinito i contenuti in formato 360° e gestito l'intero workflow, dai file sorgente all'esportazione sferica.</p>
+        <p class="ruolo"><strong>Ruolo</strong> Ideatrice, operatrice Insta360 e video editor</p>
+      </div>
+      <div class="media largo">Qui va il video o un'immagine del progetto</div>
+    </div>
+  </section>
+
+  <section class="fascia">
+    <div class="wrap progetto">
+      <div class="testo">
+        <span class="formato">Installazione interattiva</span>
+        <h2>Come immagini la tua città del futuro?</h2>
+        <p>Installazione multimediale interattiva nata in un corso di Interactive Media. Ne ho ideato il concept e l'ho programmata con Isadora, realizzando le animazioni 2D e il montaggio dei contenuti, oltre al trailer ufficiale per presentarla al pubblico.</p>
+        <p class="ruolo"><strong>Ruolo</strong> Co-ideatrice, animatrice 2D e video editor</p>
+      </div>
+      <div class="media">Qui va il trailer o un'immagine del progetto</div>
+    </div>
+  </section>
+
+  <section class="fascia scura">
+    <div class="wrap progetto inverso">
+      <div class="testo">
+        <span class="formato">Modellazione 3D</span>
+        <h2>Ambiente 3D: la stanza</h2>
+        <p>Un ambiente tridimensionale realistico, una stanza, creato interamente in Blender. Ho seguito tutta la pipeline: modellazione poligonale, posizionamento strategico delle camere virtuali e setup avanzato dell'illuminazione.</p>
+        <p class="ruolo"><strong>Ruolo</strong> 3D artist</p>
+      </div>
+      <div class="media">Qui va un render del progetto</div>
+    </div>
+  </section>
+
+  <section class="fascia">
+    <div class="wrap progetto">
+      <div class="testo">
+        <span class="formato">Computer animation</span>
+        <h2>Replica di uno spot televisivo</h2>
+        <p>Lavoro di gruppo: abbiamo ricreato inquadratura per inquadratura uno spot pubblicitario esistente. Mi sono occupata delle animazioni, coordinandomi con il team per sincronizzarle, gestire il timing al millesimo di secondo e curare la resa estetica finale.</p>
+        <p class="ruolo"><strong>Ruolo</strong> 3D animator, in team</p>
+      </div>
+      <div class="media">Qui va il video o un'immagine del progetto</div>
+    </div>
+  </section>
+
+</main>
+
+<section class="chi" id="chi-sono">
+  <div class="wrap">
+    <h2>Chi sono</h2>
+    <div>
+      <p>[Scrivi qui 3-4 righe su di te: il tuo percorso di studi, che cosa ti appassiona del mestiere audiovisivo e che cosa cerchi con questo concorso.]</p>
+      <p>Mi occupo di set, montaggio, riprese immersive, interazione e 3D.</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contatti">
+  <div class="wrap">
+    <div>
+      <h2>Contatti</h2>
+      <a href="mailto:tuaemail@esempio.it">tuaemail@esempio.it</a>
+    </div>
+    <div>
+      <a href="#">Scarica il CV</a><br>
+      <a href="#">Profilo LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
